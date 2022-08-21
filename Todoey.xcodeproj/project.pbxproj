@@ -9,23 +9,25 @@
 /* Begin PBXBuildFile section */
 		ED3DB98628AA8F750093A7E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DB98528AA8F750093A7E9 /* AppDelegate.swift */; };
 		ED3DB98828AA8F750093A7E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DB98728AA8F750093A7E9 /* SceneDelegate.swift */; };
-		ED3DB98A28AA8F750093A7E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DB98928AA8F750093A7E9 /* ViewController.swift */; };
+		ED3DB98A28AA8F750093A7E9 /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DB98928AA8F750093A7E9 /* ToDoListViewController.swift */; };
 		ED3DB98D28AA8F750093A7E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3DB98B28AA8F750093A7E9 /* Main.storyboard */; };
 		ED3DB99028AA8F750093A7E9 /* Todoey.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ED3DB98E28AA8F750093A7E9 /* Todoey.xcdatamodeld */; };
 		ED3DB99228AA8F770093A7E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED3DB99128AA8F770093A7E9 /* Assets.xcassets */; };
 		ED3DB99528AA8F770093A7E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3DB99328AA8F770093A7E9 /* LaunchScreen.storyboard */; };
+		ED3DB99D28AB93720093A7E9 /* UIViewController + Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DB99C28AB93720093A7E9 /* UIViewController + Preview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		ED3DB98228AA8F750093A7E9 /* Todoey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todoey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED3DB98528AA8F750093A7E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED3DB98728AA8F750093A7E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		ED3DB98928AA8F750093A7E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		ED3DB98928AA8F750093A7E9 /* ToDoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
 		ED3DB98C28AA8F750093A7E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ED3DB98F28AA8F750093A7E9 /* Todoey.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Todoey.xcdatamodel; sourceTree = "<group>"; };
 		ED3DB99128AA8F770093A7E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ED3DB99428AA8F770093A7E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED3DB99628AA8F770093A7E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ED3DB99C28AB93720093A7E9 /* UIViewController + Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Preview.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,14 +62,39 @@
 			children = (
 				ED3DB98528AA8F750093A7E9 /* AppDelegate.swift */,
 				ED3DB98728AA8F750093A7E9 /* SceneDelegate.swift */,
-				ED3DB98928AA8F750093A7E9 /* ViewController.swift */,
-				ED3DB98B28AA8F750093A7E9 /* Main.storyboard */,
-				ED3DB99128AA8F770093A7E9 /* Assets.xcassets */,
-				ED3DB99328AA8F770093A7E9 /* LaunchScreen.storyboard */,
+				ED6E37F028B2441A001D6DED /* Model */,
+				ED6E37F128B2442D001D6DED /* Views */,
+				ED6E37F228B2443A001D6DED /* Controller */,
 				ED3DB99628AA8F770093A7E9 /* Info.plist */,
 				ED3DB98E28AA8F750093A7E9 /* Todoey.xcdatamodeld */,
+				ED3DB99C28AB93720093A7E9 /* UIViewController + Preview.swift */,
+				ED3DB99128AA8F770093A7E9 /* Assets.xcassets */,
 			);
 			path = Todoey;
+			sourceTree = "<group>";
+		};
+		ED6E37F028B2441A001D6DED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ED6E37F128B2442D001D6DED /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				ED3DB98B28AA8F750093A7E9 /* Main.storyboard */,
+				ED3DB99328AA8F770093A7E9 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		ED6E37F228B2443A001D6DED /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				ED3DB98928AA8F750093A7E9 /* ToDoListViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,10 +168,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED3DB98A28AA8F750093A7E9 /* ViewController.swift in Sources */,
+				ED3DB98A28AA8F750093A7E9 /* ToDoListViewController.swift in Sources */,
 				ED3DB98628AA8F750093A7E9 /* AppDelegate.swift in Sources */,
 				ED3DB98828AA8F750093A7E9 /* SceneDelegate.swift in Sources */,
 				ED3DB99028AA8F750093A7E9 /* Todoey.xcdatamodeld in Sources */,
+				ED3DB99D28AB93720093A7E9 /* UIViewController + Preview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +248,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -274,7 +302,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
