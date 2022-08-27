@@ -15,6 +15,7 @@
 		ED3DB99228AA8F770093A7E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED3DB99128AA8F770093A7E9 /* Assets.xcassets */; };
 		ED3DB99528AA8F770093A7E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3DB99328AA8F770093A7E9 /* LaunchScreen.storyboard */; };
 		ED3DB99D28AB93720093A7E9 /* UIViewController + Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DB99C28AB93720093A7E9 /* UIViewController + Preview.swift */; };
+		ED50946028BA348F003679A9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED50945F28BA348F003679A9 /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		ED3DB99428AA8F770093A7E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED3DB99628AA8F770093A7E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED3DB99C28AB93720093A7E9 /* UIViewController + Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Preview.swift"; sourceTree = "<group>"; };
+		ED50945F28BA348F003679A9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,17 +67,26 @@
 				ED6E37F028B2441A001D6DED /* Model */,
 				ED6E37F128B2442D001D6DED /* Views */,
 				ED6E37F228B2443A001D6DED /* Controller */,
+				ED50946128BA351E003679A9 /* Supporting Files */,
+			);
+			path = Todoey;
+			sourceTree = "<group>";
+		};
+		ED50946128BA351E003679A9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
 				ED3DB99628AA8F770093A7E9 /* Info.plist */,
 				ED3DB98E28AA8F750093A7E9 /* Todoey.xcdatamodeld */,
 				ED3DB99C28AB93720093A7E9 /* UIViewController + Preview.swift */,
 				ED3DB99128AA8F770093A7E9 /* Assets.xcassets */,
 			);
-			path = Todoey;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		ED6E37F028B2441A001D6DED /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ED50945F28BA348F003679A9 /* Item.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -172,6 +183,7 @@
 				ED3DB98628AA8F750093A7E9 /* AppDelegate.swift in Sources */,
 				ED3DB98828AA8F750093A7E9 /* SceneDelegate.swift in Sources */,
 				ED3DB99028AA8F750093A7E9 /* Todoey.xcdatamodeld in Sources */,
+				ED50946028BA348F003679A9 /* Item.swift in Sources */,
 				ED3DB99D28AB93720093A7E9 /* UIViewController + Preview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -321,7 +333,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S7HD7PPB8U;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Todoey/Info.plist;
+				INFOPLIST_FILE = "Todoey/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -349,7 +361,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = S7HD7PPB8U;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Todoey/Info.plist;
+				INFOPLIST_FILE = "Todoey/Supporting Files/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
