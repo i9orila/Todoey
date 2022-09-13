@@ -15,7 +15,7 @@
 		ED3DB99228AA8F770093A7E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED3DB99128AA8F770093A7E9 /* Assets.xcassets */; };
 		ED3DB99528AA8F770093A7E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3DB99328AA8F770093A7E9 /* LaunchScreen.storyboard */; };
 		ED3DB99D28AB93720093A7E9 /* UIViewController + Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DB99C28AB93720093A7E9 /* UIViewController + Preview.swift */; };
-		ED50946028BA348F003679A9 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED50945F28BA348F003679A9 /* Item.swift */; };
+		EDD8EEF328CE607900298352 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDD8EEF128CE607900298352 /* DataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,7 +29,7 @@
 		ED3DB99428AA8F770093A7E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED3DB99628AA8F770093A7E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED3DB99C28AB93720093A7E9 /* UIViewController + Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Preview.swift"; sourceTree = "<group>"; };
-		ED50945F28BA348F003679A9 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		EDD8EEF228CE607900298352 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +86,7 @@
 		ED6E37F028B2441A001D6DED /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ED50945F28BA348F003679A9 /* Item.swift */,
+				EDD8EEF128CE607900298352 /* DataModel.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,8 +182,8 @@
 				ED3DB98A28AA8F750093A7E9 /* ToDoListViewController.swift in Sources */,
 				ED3DB98628AA8F750093A7E9 /* AppDelegate.swift in Sources */,
 				ED3DB98828AA8F750093A7E9 /* SceneDelegate.swift in Sources */,
+				EDD8EEF328CE607900298352 /* DataModel.xcdatamodeld in Sources */,
 				ED3DB99028AA8F750093A7E9 /* Todoey.xcdatamodeld in Sources */,
-				ED50946028BA348F003679A9 /* Item.swift in Sources */,
 				ED3DB99D28AB93720093A7E9 /* UIViewController + Preview.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -334,11 +334,13 @@
 				DEVELOPMENT_TEAM = S7HD7PPB8U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Todoey/Supporting Files/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -362,11 +364,13 @@
 				DEVELOPMENT_TEAM = S7HD7PPB8U;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Todoey/Supporting Files/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIStatusBarStyle = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -411,6 +415,16 @@
 			);
 			currentVersion = ED3DB98F28AA8F750093A7E9 /* Todoey.xcdatamodel */;
 			path = Todoey.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		EDD8EEF128CE607900298352 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EDD8EEF228CE607900298352 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = EDD8EEF228CE607900298352 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
