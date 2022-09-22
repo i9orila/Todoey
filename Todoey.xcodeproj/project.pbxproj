@@ -15,6 +15,7 @@
 		ED3DB99228AA8F770093A7E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ED3DB99128AA8F770093A7E9 /* Assets.xcassets */; };
 		ED3DB99528AA8F770093A7E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED3DB99328AA8F770093A7E9 /* LaunchScreen.storyboard */; };
 		ED3DB99D28AB93720093A7E9 /* UIViewController + Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED3DB99C28AB93720093A7E9 /* UIViewController + Preview.swift */; };
+		ED7C587428D48BAC00FF3AC5 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED7C587328D48BAC00FF3AC5 /* CategoryViewController.swift */; };
 		EDD8EEF328CE607900298352 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EDD8EEF128CE607900298352 /* DataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		ED3DB99428AA8F770093A7E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED3DB99628AA8F770093A7E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ED3DB99C28AB93720093A7E9 /* UIViewController + Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Preview.swift"; sourceTree = "<group>"; };
+		ED7C587328D48BAC00FF3AC5 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		EDD8EEF228CE607900298352 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,6 +105,7 @@
 		ED6E37F228B2443A001D6DED /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				ED7C587328D48BAC00FF3AC5 /* CategoryViewController.swift */,
 				ED3DB98928AA8F750093A7E9 /* ToDoListViewController.swift */,
 			);
 			path = Controller;
@@ -181,6 +184,7 @@
 			files = (
 				ED3DB98A28AA8F750093A7E9 /* ToDoListViewController.swift in Sources */,
 				ED3DB98628AA8F750093A7E9 /* AppDelegate.swift in Sources */,
+				ED7C587428D48BAC00FF3AC5 /* CategoryViewController.swift in Sources */,
 				ED3DB98828AA8F750093A7E9 /* SceneDelegate.swift in Sources */,
 				EDD8EEF328CE607900298352 /* DataModel.xcdatamodeld in Sources */,
 				ED3DB99028AA8F750093A7E9 /* Todoey.xcdatamodeld in Sources */,
