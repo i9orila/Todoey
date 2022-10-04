@@ -12,17 +12,19 @@ class ToDoListViewController: UITableViewController {
     
     var itemArray = [Item]()
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var selectedCategory: Category? {
+        didSet{
+            loadItems()
+        }
+    }
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //print(dataFilePath)
         print (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        
-        
-        loadItems()
     }
     
     
@@ -38,8 +40,6 @@ class ToDoListViewController: UITableViewController {
         let item = itemArray[indexPath.row]
         
         cell.textLabel?.text = item.title
-        
-        
         
         // Ternary operator ==>
         // value = condition ? valueTrue : valueFalse
@@ -60,10 +60,16 @@ class ToDoListViewController: UITableViewController {
         saveItems()
         
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        
-        
     }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+          if editingStyle == .delete {
+            print("Deleted")
+
+              //self.title.remove(at: indexPath.row)
+            //self.tableView.deleteRows(at: [indexPath], with: .automatic)
+          }
+        }
+    
     
     //MARK: - Add new items
     
@@ -77,7 +83,7 @@ class ToDoListViewController: UITableViewController {
             let newItem = Item(context: self.context)
             newItem.title = textField.text!
             newItem.done = false
-            
+            newItem.parentCategory = self.selectedCategory
             self.itemArray.append(newItem)
             
             self.saveItems()
@@ -104,7 +110,16 @@ class ToDoListViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest()) {
+    func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest(), predicate: NSPredicate? = nil) {
+        
+        let categoryPredicate = NSPredicate(format:"parentCategory.name MATCHES %@", selectedCategory!.name!)
+        
+        if let additionalPredicate = predicate {
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, additionalPredicate])
+        } else {
+            request.predicate = categoryPredicate
+        }
+        
         do {
             itemArray = try context.fetch(request)
         } catch {

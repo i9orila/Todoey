@@ -10,7 +10,7 @@ import CoreData
 
 class CategoryViewController: UITableViewController {
     
-    var category = [Category]()
+    var categories = [Category]()
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext  //crud data
     
@@ -24,24 +24,14 @@ class CategoryViewController: UITableViewController {
     
     //MARK: - TableView Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return category.count
+        return categories.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCategoryCell", for: indexPath)
         
-        let category = category[indexPath.row]
-        
-        cell.textLabel?.text = category.name
-        
-        
-        
-        // Ternary operator ==>
-        // value = condition ? valueTrue : valueFalse
-        
-        //item.done ? (cell.accessoryType = .checkmark) : (cell.accessoryType = .none)
-        //cell.accessoryType = item.done ? .checkmark : .none
+        cell.textLabel?.text = categories[indexPath.row].name
         
         return cell
     }
@@ -62,7 +52,7 @@ class CategoryViewController: UITableViewController {
     
     func loadCategory(with request: NSFetchRequest<Category> = Category.fetchRequest()) {
         do {
-            category = try context.fetch(request)
+            categories = try context.fetch(request)
         } catch {
             print("Error fetching data from context, \(error)")
         }
@@ -81,7 +71,7 @@ class CategoryViewController: UITableViewController {
             newCategory.name = textField.text!
             
             
-            self.category.append(newCategory)
+            self.categories.append(newCategory)
             
             self.saveCategory()
         }
@@ -97,9 +87,14 @@ class CategoryViewController: UITableViewController {
     
     
     //MARK: - TableView Delegate Methods
-    
-    
-    
-    
-    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "goToItems", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! ToDoListViewController
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedCategory = categories[indexPath.row]
+        }
+    }
 }
