@@ -56,7 +56,7 @@ class CategoryViewController: UITableViewController {
         } catch {
             print("Error fetching data from context, \(error)")
         }
-        tableView.reloadData()
+        self.tableView.reloadData()
     }
     
     //MARK: - Add New Categories
@@ -95,6 +95,16 @@ class CategoryViewController: UITableViewController {
         
         if let indexPath = tableView.indexPathForSelectedRow {
             destinationVC.selectedCategory = categories[indexPath.row]
+        }
+    }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("Deleted")
+            let commit = categories[indexPath.row]
+            context.delete(commit)
+            self.categories.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.saveCategory()
         }
     }
 }
