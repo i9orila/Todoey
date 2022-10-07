@@ -62,13 +62,15 @@ class ToDoListViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-          if editingStyle == .delete {
+        if editingStyle == .delete {
             print("Deleted")
-
-              //self.title.remove(at: indexPath.row)
-            //self.tableView.deleteRows(at: [indexPath], with: .automatic)
-          }
+            let commit = itemArray[indexPath.row]
+            context.delete(commit)
+            self.itemArray.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.saveItems()
         }
+    }
     
     
     //MARK: - Add new items

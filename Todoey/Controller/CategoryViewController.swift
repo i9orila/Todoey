@@ -32,6 +32,8 @@ class CategoryViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCategoryCell", for: indexPath)
         
         cell.textLabel?.text = categories[indexPath.row].name
+        //cell.textLabel?.font
+     
         
         return cell
     }
