@@ -83,7 +83,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="mH6-Eo-gMY">
                             <color key="tintColor" systemColor="labelColor"/>
                             <connections>
-                                <action selector="addButtonPressed:" destination="uff-r7-qem" id="ZW1-aY-Y8C"/>
+                                <action selector="addItem:" destination="uff-r7-qem" id="MD1-v6-HSS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -6,11 +6,13 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
 class CategoryViewController: UITableViewController {
     
-    var categories = [Category]()
+    let realm = try! Realm()
+    
+    var categories: Results<Category>!
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext  //crud data
     
@@ -19,21 +21,22 @@ class CategoryViewController: UITableViewController {
         
         print (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
-        loadCategory()
+        loadCategories()
     }
     
     //MARK: - TableView Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories.count
+        /* nil coalescing operator, если категории не ноль вернет каунт, если ноль то вернет 1 */
+        return categories?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoCategoryCell", for: indexPath)
         
-        cell.textLabel?.text = categories[indexPath.row].name
+        cell.textLabel?.text = categories?[indexPath.row].name ?? "No categories added yet"
         //cell.textLabel?.font
-     
+        
         
         return cell
     }
@@ -41,9 +44,12 @@ class CategoryViewController: UITableViewController {
     
     //MARK: - Data Manipulation Methods.
     //Save and load data (CRUD)
-    func saveCategory() {
+    func save(category: Category) {
         do{
-            try context.save()
+            try realm.write {
+                realm.add(category)
+            }
+            
         } catch {
             print("Error saving context, \(error)")
         }
@@ -52,13 +58,10 @@ class CategoryViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    func loadCategory(with request: NSFetchRequest<Category> = Category.fetchRequest()) {
-        do {
-            categories = try context.fetch(request)
-        } catch {
-            print("Error fetching data from context, \(error)")
-        }
-        self.tableView.reloadData()
+    func loadCategories() {
+        
+        categories = realm.objects(Category.self)
+        tableView.reloadData()
     }
     
     //MARK: - Add New Categories
@@ -69,13 +72,10 @@ class CategoryViewController: UITableViewController {
         
         let alert = UIAlertController(title:"Add new category", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            let newCategory = Category(context: self.context)
+            
+            let newCategory = Category()
             newCategory.name = textField.text!
-            
-            
-            self.categories.append(newCategory)
-            
-            self.saveCategory()
+            self.save(category: newCategory)
         }
         
         alert.addTextField { (alertTextField) in
@@ -85,9 +85,6 @@ class CategoryViewController: UITableViewController {
         alert.addAction(action)
         present(alert, animated: true)
     }
-    
-    
-    
     //MARK: - TableView Delegate Methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "goToItems", sender: self)
@@ -96,17 +93,17 @@ class CategoryViewController: UITableViewController {
         let destinationVC = segue.destination as! ToDoListViewController
         
         if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.selectedCategory = categories[indexPath.row]
+            destinationVC.selectedCategory = categories?[indexPath.row]
         }
     }
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            print("Deleted")
-            let commit = categories[indexPath.row]
-            context.delete(commit)
-            self.categories.remove(at: indexPath.row)
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            self.saveCategory()
-        }
-    }
+    //    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    //        if editingStyle == .delete {
+    //            print("Deleted")
+    //            let commit = categories[indexPath.row]
+    //            context.delete(commit)
+    //            self.categories.remove(at: indexPath.row)
+    //            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+    //            self.saveCategory()
+    //      }
+    //    }
 }
