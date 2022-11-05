@@ -18,16 +18,16 @@ class ToDoListViewController: UITableViewController {
             loadItems()
         }
     }
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //print(dataFilePath)
-        print (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+       // print (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        title = selectedCategory?.name
+    }
     
     //MARK: - Tableview Datasorse Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,9 +60,10 @@ class ToDoListViewController: UITableViewController {
             
             if let currentCategory = self.selectedCategory {
                 do {
-                    try self.realm.write() {
+                    try self.realm.write {
                         let newItem = Item()
                         newItem.title = textField.text!
+                        newItem.dateCreated = Date()
                         currentCategory.items.append(newItem)
                     }
                 } catch {
@@ -88,26 +89,53 @@ class ToDoListViewController: UITableViewController {
         tableView.reloadData()
     }
     //MARK: - Tableview Delegate Methods
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
-        //        toDoItems[indexPath.row].done = !toDoItems[indexPath.row].done
-        //
-        //        saveItems()
-        
-        tableView.deselectRow(at: indexPath, animated: true)
-        //    }
-        //    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        //        if editingStyle == .delete {
-        //            print("Deleted")
-        //            let commit = toDoItems[indexPath.row]
-        //            context.delete(commit)
-        //            self.toDoItems.remove(at: indexPath.row)
-        //            self.tableView.deleteRows(at: [indexPath], with: .automatic)
-        //            self.saveItems()
+        if let item = toDoItems?[indexPath.row] {
+            do {
+                try realm.write {
+                    item.done = !item.done
+                }
+            } catch {
+                print ("Error saving done status\(error)")
+            }
+        }
+        self.tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("Deleted")
+            if let item = toDoItems?[indexPath.row] {
+                do {
+                    try realm.write {
+                        realm.delete(item)
+                    }
+                } catch {
+                    print ("Error delete\(error)")
+                }
+            }
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        self.tableView.reloadData()
     }
 }
 
-
-
+//MARK: - Search bar methods
+extension ToDoListViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        toDoItems = toDoItems?.filter("title CONTAINS [cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
+        
+        tableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadItems()
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
+    }
+}

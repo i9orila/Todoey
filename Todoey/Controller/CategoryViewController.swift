@@ -14,12 +14,9 @@ class CategoryViewController: UITableViewController {
     
     var categories: Results<Category>!
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext  //crud data
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+//print (FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)) 
         
         loadCategories()
     }
@@ -40,8 +37,6 @@ class CategoryViewController: UITableViewController {
         
         return cell
     }
-    
-    
     //MARK: - Data Manipulation Methods.
     //Save and load data (CRUD)
     func save(category: Category) {
@@ -96,14 +91,33 @@ class CategoryViewController: UITableViewController {
             destinationVC.selectedCategory = categories?[indexPath.row]
         }
     }
-    //    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-    //        if editingStyle == .delete {
-    //            print("Deleted")
-    //            let commit = categories[indexPath.row]
-    //            context.delete(commit)
-    //            self.categories.remove(at: indexPath.row)
-    //            self.tableView.deleteRows(at: [indexPath], with: .automatic)
-    //            self.saveCategory()
-    //      }
-    //    }
+    
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("Deleted")
+            if let item = categories?[indexPath.row] {
+                do {
+                    try realm.write {
+                        realm.delete(item)
+                    }
+                } catch {
+                    print ("Error delete\(error)")
+                }
+            }
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        self.tableView.reloadData()
+            
+        }
+    
 }
+
+////MARK: - Search bar methods
+//extension ToDoListViewController: UISearchBarDelegate {
+//
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        toDoItems = toDoItems?.filter("title CONTAINS [cd] %@", searchBar.text!).sorted(byKeyPath: "title", ascending: true)
+//    }
+//
+//}
